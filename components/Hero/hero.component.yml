@@ -1,0 +1,74 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero Banner
+status: experimental
+description: A hero banner component with background image, title, subtitle, description and call-to-action buttons
+props:
+  type: object
+  required:
+    - title
+    - link_url_1
+  properties:
+    title:
+      type: string
+      title: Title
+      description: The title text
+      examples:
+        - Hero title text
+    subtitle:
+      type: string
+      title: Subtitle
+      description: Optional subtitle text
+      examples:
+        - Hero subtitle
+    summary:
+      type: string
+      pattern: '(.|\r?\n)*'
+      title: Summary
+      description: The optional summary/description text
+      examples:
+        - Hero summary is an optional field and can span multiple lines
+    image:
+      type: object
+      title: Image
+      description: "Image for the hero. Recommended size: 2:1 aspect ratio"
+      properties:
+        src:
+          type: string
+          title: Image URL
+        alt:
+          type: string
+          title: Alt text
+        width:
+          type: integer
+          title: Image width
+        height:
+          type: integer
+          title: Image height
+      examples:
+        - src: images/example-hero.jpg
+          alt: 'Hero background image'
+          width: 2000
+          height: 1000
+    link_text_1:
+      type: string
+      title: Primary link text
+      default: Learn more
+      examples:
+        - Primary link
+    link_url_1:
+      type: string
+      format: uri
+      title: Primary link URL
+      examples:
+        - https://example.com
+    link_text_2:
+      type: string
+      title: Secondary link text
+      examples:
+        - Secondary link
+    link_url_2:
+      type: string
+      format: uri
+      title: Secondary link URL
+      examples:
+        - https://example.com

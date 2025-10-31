@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Hero Banner Component
+ *
+ * Available variables:
+ * - image: Object containing image data
+ *   - src: Image source URL
+ *   - alt: Image alt text
+ *   - width: Image width
+ *   - height: Image height
+ * - title: Main title text (required)
+ * - subtitle: Subtitle text
+ * - summary: Summary/description text
+ * - link_url_1: Primary button URL (required)
+ * - link_text_1: Primary button text
+ * - link_url_2: Secondary button URL
+ * - link_text_2: Secondary button text
+ */
+#}
+
+{% set classes = [
+  'hero-banner',
+] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if image.src %}
+    <img class="hero-banner__image" src="{{ image.src }}" alt="{{ image.alt }}" {% if image.width %}width="{{ image.width }}"{% endif %} {% if image.height %}height="{{ image.height }}"{% endif %}>
+  {% endif %}
+  <div class="hero-banner__container container grid-full">
+    <div class="hero-banner__data">
+      <div class="hero-banner__data-inner">
+        <h1 class="hero-banner__title">{{ title }}</h1>
+        {% if subtitle %}
+          <h2 class="hero-banner__subtitle">{{ subtitle }}</h2>
+        {% endif %}
+        {% if summary %}
+          <p class="hero-banner__summary">{{ summary }}</p>
+        {% endif %}
+        <div class="hero-banner__buttons">
+          <a class="button button--primary" href="{{ link_url_1 }}">{{ link_text_1|default('Learn more'|t) }}</a>
+          {%- if link_text_2 and link_url_2 -%}
+            <a class="button button--secondary" href="{{ link_url_2 }}">{{ link_text_2 }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
